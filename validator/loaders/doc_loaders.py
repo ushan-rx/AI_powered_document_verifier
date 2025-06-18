@@ -1,4 +1,4 @@
-from langchain.document_loaders import UnstructuredPDFLoader
+from langchain_community.document_loaders import UnstructuredPDFLoader
 from PIL import Image
 import pytesseract
 

@@ -1,11 +1,8 @@
-from fastapi import FastAPI, HTTPException
-
-from urllib.parse import urlparse
+from fastapi import FastAPI
 
 from pydantic import BaseModel
-
-from loaders.doc_loaders import load_pdf, load_image
-
+from validator.loaders.doc_loaders import load_pdf, load_image
+from validator.chains.validator_chain import validate
 
 app = FastAPI()
 
@@ -24,8 +21,9 @@ async def process(req: ProcessRequest):
             docs = await load_image(path)
         all_docs += docs
 
-    print(all_docs)
-    if not all_docs:
-        raise HTTPException(400, "No documents found")
+    result_json = await validate(all_docs) # JSON string from the validation chain
+    import json
+    payload = json.loads(result_json)
+    print(payload)
     return {"status": "ok", "doc_id": req.doc_id}
 
