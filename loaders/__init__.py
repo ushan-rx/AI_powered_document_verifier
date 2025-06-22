@@ -1,1 +1,1 @@
-from validator
+from .doc_loaders import *

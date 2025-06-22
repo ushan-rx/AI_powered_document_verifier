@@ -1,9 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from validator.loaders.doc_loaders import load_pdf, load_image
-from validator.chains.validator_chain import validate
-from models.mongo import save_insights, get_insights
-from urllib.parse import urlparse
+from loaders import load_pdf, load_image
+from models import save_insights, get_insights
 
 app = FastAPI()
 

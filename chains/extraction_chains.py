@@ -2,7 +2,7 @@ from langchain import LLMChain, PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.output_parsers import PydanticOutputParser
 
-from validator.schemas import PatientIdentification, MedicalRecord
+from schemas import PatientIdentification, MedicalRecord
 
 # Initialize LLM
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.0)

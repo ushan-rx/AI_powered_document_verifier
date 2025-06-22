@@ -8,3 +8,6 @@ python-multipart>=0.0.6
 pillow>=10.0.0
 pytesseract>=0.3.10
 unstructured>=0.6.1
+pydantic~=2.11.7
+langchain-core~=0.3.68
+langchain-community~=0.3.27

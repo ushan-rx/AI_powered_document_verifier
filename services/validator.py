@@ -1,8 +1,12 @@
 import json
 import logging
+
+from langchain.chains.llm import LLMChain
+from langchain_core.output_parsers import PydanticOutputParser
 from pydantic import ValidationError
 
-from validator.chains.extraction_chains import identification_chain, med_chain, id_parser, med_parser
+from chains import identification_chain
+from chains.extraction_chains import med_chain, id_parser, med_parser
 from langchain.schema import Document
 
 logger = logging.getLogger(__name__)
@@ -37,7 +41,7 @@ async def validate_and_match(id_docs: list[Document], med_docs: list[Document]) 
     id_text  = "\n\n".join(d.page_content for d in id_docs)
     med_text = "\n\n".join(d.page_content for d in med_docs)
 
-    id_result  = await extract_structured(id_chain,  id_parser,  id_text)
+    id_result  = await extract_structured(identification_chain,  id_parser,  id_text)
     med_result = await extract_structured(med_chain, med_parser, med_text)
 
     issues = match_patient(id_result["parsed"], med_result["parsed"])
