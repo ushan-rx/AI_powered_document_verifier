@@ -1,13 +1,16 @@
 fastapi>=0.95.0
 uvicorn[standard]>=0.22.0
 langchain>=0.0.166
-openai>=0.27.0
+#mongoDB
 motor>=3.1.1
 pymongo>=4.4.0
+#file uploads and parsing
 python-multipart>=0.0.6
 pillow>=10.0.0
 pytesseract>=0.3.10
 unstructured>=0.6.1
+
 pydantic~=2.11.7
 langchain-core~=0.3.68
 langchain-community~=0.3.27
+langchain-google-genai~=2.1.6
